@@ -9,6 +9,8 @@ class Program
 
         bool isValidOption = false;
 
+        CourseLogic courseLogic = new CourseLogic();
+
         do
         {
             Console.WriteLine("\n[1] Registration\n[2] Login\n[3] Exit");
@@ -18,12 +20,10 @@ class Program
             switch (option)
             {
                 case "1":
-                    // Console.WriteLine("Registration...");
-                    // isValidOption = true;
+                    courseLogic.Register();
                     break;
                 case "2":
-                    Console.WriteLine("Login in...");
-                    isValidOption = true;
+                    courseLogic.Login();
                     break;
                 case "3":
                     Console.WriteLine("Exiting application...");

@@ -9,54 +9,24 @@ public enum Gender
 
 public class User
 {
-    private static int IDCounter { get; set; } = 100;
-    public string? RegistrationID { get; private set; }
-    public string? Username { get; set; }
-    public int Age { get; set; }
-    public Gender Gender { get; set; }
-    public string? Qualification { get; set; }
-    public string? MobileNumber { get; set; }
-    public string? MailID { get; set; }
-    public List<User> users { get;set; }
+    private static int IDCounter = 1;
+    public string RegistrationID { get; }
+    public string? Username { get; }
+    public int Age { get; }
+    public Gender Gender { get;}
+    public string? Qualification { get; }
+    public string? MobileNumber { get; }
+    public string? MailID { get; }
 
-    public void SetID()
+    public User(string username, int age, Gender gender, string qualification, string mobilenumber, string mailid)
     {
+        RegistrationID = $"SYNC{IDCounter}";
         IDCounter++;
-        RegistrationID = "SYNC" + IDCounter;
-    }
-
-    public string GetID() { return RegistrationID!; }
-
-    public User(string regID, string username, int age, Gender gender, string qualification, string mobilenumber, string mailid)
-    {
-        this.RegistrationID = regID;
-        this.Username = username;
-        this.Age = age;
-        this.Gender = gender;
-        this.Qualification = qualification;
-        this.MobileNumber = mobilenumber;
-        this.MailID = mailid;
-        this.users = new List<User>();
-    }
-
-    public void Register()
-    {
-        Console.WriteLine("\n---Registration---");
-        Console.Write("Enter username: ");
-        string username = Console.ReadLine()!.Trim();
-        Console.Write("Enter age: ");
-        int age = int.Parse(Console.ReadLine()!.Trim());
-        Console.Write("Enter gender: (Male, Female or Trans: )");
-        Gender gender = (Gender)Enum.Parse(typeof(Gender), Console.ReadLine()!.Trim(), true);
-        Console.Write("Enter qualification: i.e. MA/BA etc.: ");
-        string qualification = Console.ReadLine()!.Trim();
-        Console.Write("Enter mobile number: ");
-        string mobileNumber = Console.ReadLine()!.Trim();
-        Console.Write("Enter mail id: ");
-        string mailid = Console.ReadLine()!.Trim();
-
-        User user = new User(GetID(), username, age, gender, qualification, mobileNumber, mailid);
-        users.Add(user);
-        Console.WriteLine($"Success {user.Username}! Your UserID is {user.GetID()}");
+        Username = username;
+        Age = age;
+        Gender = gender;
+        Qualification = qualification;
+        MobileNumber = mobilenumber;
+        MailID = mailid;
     }
 }
