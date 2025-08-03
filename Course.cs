@@ -1,0 +1,6 @@
+namespace synclearning;
+
+class Course
+{
+    
+}
