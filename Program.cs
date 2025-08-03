@@ -18,8 +18,8 @@ class Program
             switch (option)
             {
                 case "1":
-                    Console.WriteLine("Registration...");
-                    isValidOption = true;
+                    // Console.WriteLine("Registration...");
+                    // isValidOption = true;
                     break;
                 case "2":
                     Console.WriteLine("Login in...");
