@@ -1,4 +1,6 @@
-﻿namespace synclearning;
+﻿using System.Globalization;
+
+namespace synclearning;
 
 class Program
 {
@@ -59,9 +61,9 @@ class Program
 
     static void InitEnrollments(CourseLogic courseLogic)
     {
-        courseLogic.AddEnrollment(new Enrollment("CS2001", "SYNC1001", Convert.ToDateTime("28/01/2024")));
-        courseLogic.AddEnrollment(new Enrollment("CS2003", "SYNC1001", Convert.ToDateTime("15/02/2024")));
-        courseLogic.AddEnrollment(new Enrollment("CS2004", "SYNC1002", Convert.ToDateTime("18/02/024")));
-        courseLogic.AddEnrollment(new Enrollment("CS2002", "SYNC1002", Convert.ToDateTime("20/02/2024")));
+        courseLogic.AddEnrollment(new Enrollment("CS2001", "SYNC1001", DateTime.ParseExact("28/01/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture)));
+        courseLogic.AddEnrollment(new Enrollment("CS2003", "SYNC1001", DateTime.ParseExact("15/02/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture)));
+        courseLogic.AddEnrollment(new Enrollment("CS2004", "SYNC1002", DateTime.ParseExact("18/02/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture)));
+        courseLogic.AddEnrollment(new Enrollment("CS2002", "SYNC1002", DateTime.ParseExact("20/02/2024", "dd/MM/yyyy", CultureInfo.InvariantCulture)));
     }
 }
