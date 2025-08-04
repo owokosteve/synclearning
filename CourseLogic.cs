@@ -130,9 +130,10 @@ public class CourseLogic
                 DateTime courseOneDate = enrolledCourses[0].EnrollmentDate.AddDays(currentEnrolledCouse1!.CourseDuration);
                 DateTime courseTwoDate = enrolledCourses[1].EnrollmentDate.AddDays(currentEnrolledCouse2!.CourseDuration);
                 
-                string nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.ToString().Split(" ")[0] : courseOneDate.ToString().Split(" ")[0];
+                // string nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.ToString().Split(" ")[0] : courseOneDate.ToString().Split(" ")[0];
+                DateTime nextAvailableDate1 = courseOneDate > courseTwoDate ? courseTwoDate.Date : courseOneDate.Date;
 
-                Console.WriteLine($"You have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate}.");
+                Console.WriteLine($"You have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate1.ToLongDateString()}.");
 
             }
         }
