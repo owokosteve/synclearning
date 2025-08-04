@@ -122,12 +122,18 @@ public class CourseLogic
             }
             else
             {
-                // Check next available date
-                DateTime courseOne = enrolledCourses[0].EnrollmentDate.AddMonths(5);
-                DateTime courseTwo = enrolledCourses[1].EnrollmentDate.AddMonths(2);
+                // Get the course for the enrolledCourses
+                Course? currentEnrolledCouse1 = courses.Find(c => c.CourseID == enrolledCourses[0].CourseID);
+                Course? currentEnrolledCouse2 = courses.Find(c => c.CourseID == enrolledCourses[1].CourseID);
 
-                Console.WriteLine($"\nCourse 1: {courseOne}");
-                Console.WriteLine($"Course 2: {courseTwo}");
+                // Extract enrolled date from the the enrolledCourses list
+                DateTime courseOneDate = enrolledCourses[0].EnrollmentDate.AddDays(currentEnrolledCouse1!.CourseDuration);
+                DateTime courseTwoDate = enrolledCourses[1].EnrollmentDate.AddDays(currentEnrolledCouse2!.CourseDuration);
+                
+                string nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.ToString().Split(" ")[0] : courseOneDate.ToString().Split(" ")[0];
+
+                Console.WriteLine($"You have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate}.");
+
             }
         }
     }
