@@ -7,10 +7,12 @@ class Program
         Console.WriteLine("\nWelcome to SYNC LEARNING PORTAL!");
         Console.WriteLine("How can we help you today? Select one option below.");
 
-        bool isValidOption = false;
-
         CourseLogic courseLogic = new CourseLogic();
         InitCourses(courseLogic);
+        InitUsers(courseLogic);
+        InitEnrollments(courseLogic);
+
+        bool isValidOption = false;
 
         do
         {
@@ -47,5 +49,19 @@ class Program
         courseLogic.AddCourse(new Course("CSS", "Priyadharshini", 2, 3));
         courseLogic.AddCourse(new Course("JS", "Baskaran", 3, 1));
         courseLogic.AddCourse(new Course("TS", "Ravi", 1, 2));
+    }
+
+    static void InitUsers(CourseLogic courseLogic)
+    {
+        courseLogic.AddUser(new User("Ravichandran", 30, Gender.Male, "ME", "9938388333", "ravi@gmail.com"));
+        courseLogic.AddUser(new User("Priyadharshini", 25, Gender.Female, "BE", "9944444455", "priya@gmail.com"));
+    }
+
+    static void InitEnrollments(CourseLogic courseLogic)
+    {
+        courseLogic.AddEnrollment(new Enrollment("CS2001", "SYNC1001", Convert.ToDateTime("28/01/2024")));
+        courseLogic.AddEnrollment(new Enrollment("CS2003", "SYNC1001", Convert.ToDateTime("15/02/2024")));
+        courseLogic.AddEnrollment(new Enrollment("CS2004", "SYNC1002", Convert.ToDateTime("18/02/024")));
+        courseLogic.AddEnrollment(new Enrollment("CS2002", "SYNC1002", Convert.ToDateTime("20/02/2024")));
     }
 }

@@ -9,7 +9,7 @@ public enum Gender
 
 public class User
 {
-    private static int IDCounter = 1;
+    private static int IDCounter = 1001;
     public string RegistrationID { get; }
     public string? Username { get; }
     public int Age { get; }
