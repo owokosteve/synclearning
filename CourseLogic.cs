@@ -3,6 +3,7 @@ namespace synclearning;
 public class CourseLogic
 {
     private List<User> users = new List<User>();
+    private List<Course> courses = new List<Course>();
 
     // Register new user
     public void Register()
@@ -41,6 +42,7 @@ public class CourseLogic
         }
         else
         {
+            CourseLogic courseLogic = new CourseLogic();
             bool isValidOption = false;
             do
             {
@@ -51,7 +53,8 @@ public class CourseLogic
                 switch (option)
                 {
                     case "a":
-                        Console.WriteLine("Enrolling...");
+                        // Console.WriteLine("Enrolling...");
+                        courseLogic.EnrollCourse();
                         break;
                     case "b":
                         Console.WriteLine("View history...");
@@ -69,5 +72,15 @@ public class CourseLogic
                 }
             } while (isValidOption == false);
         }
+    }
+
+    public void AddCourse(Course course)
+    {
+        courses.Add(course);
+    }
+
+    public void EnrollCourse()
+    {
+        
     }
 }

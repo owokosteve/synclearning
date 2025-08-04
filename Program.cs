@@ -10,6 +10,7 @@ class Program
         bool isValidOption = false;
 
         CourseLogic courseLogic = new CourseLogic();
+        InitCourses(courseLogic);
 
         do
         {
@@ -37,5 +38,14 @@ class Program
         } while (isValidOption == false);
 
 
+    }
+
+    static void InitCourses(CourseLogic courseLogic)
+    {
+        courseLogic.AddCourse(new Course("C#", "Baskaran", 5, 0));
+        courseLogic.AddCourse(new Course("HTML", "Ravi", 2, 5));
+        courseLogic.AddCourse(new Course("CSS", "Priyadharshini", 2, 3));
+        courseLogic.AddCourse(new Course("JS", "Baskaran", 3, 1));
+        courseLogic.AddCourse(new Course("TS", "Ravi", 1, 2));
     }
 }
