@@ -5,6 +5,7 @@ public class CourseLogic
     private List<User> users = new List<User>();
     private List<Course> courses = new List<Course>();
     private List<Enrollment> enrollments = new List<Enrollment>();
+    private List<Enrollment> enrolledCourses = new List<Enrollment>();
 
     // Register new user
     public void Register()
@@ -56,7 +57,7 @@ public class CourseLogic
                         EnrollCourse(user);
                         break;
                     case "b":
-                        Console.WriteLine("View history...");
+                        PrintUserHistory(user);
                         break;
                     case "c":
                         Console.WriteLine("Next enrollment is on...");
@@ -112,7 +113,7 @@ public class CourseLogic
         else
         {
             // Check if user has enrolled in any courses
-            List<Enrollment> enrolledCourses = enrollments.FindAll(ec => ec.RegistrationID == user.RegistrationID);
+            enrolledCourses = enrollments.FindAll(ec => ec.RegistrationID == user.RegistrationID);
             int enrollmentCount = enrolledCourses.Count;
 
             if (enrollmentCount < 2)
@@ -129,12 +130,26 @@ public class CourseLogic
                 // Extract enrolled date from the the enrolledCourses list
                 DateTime courseOneDate = enrolledCourses[0].EnrollmentDate.AddDays(currentEnrolledCouse1!.CourseDuration);
                 DateTime courseTwoDate = enrolledCourses[1].EnrollmentDate.AddDays(currentEnrolledCouse2!.CourseDuration);
-                
+
                 // string nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.ToString().Split(" ")[0] : courseOneDate.ToString().Split(" ")[0];
                 DateTime nextAvailableDate1 = courseOneDate > courseTwoDate ? courseTwoDate.Date : courseOneDate.Date;
 
                 Console.WriteLine($"You have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate1.ToLongDateString()}.");
 
+            }
+        }
+    }
+    public void PrintUserHistory(User user)
+    {
+        Console.WriteLine($"\n{user?.Username!.ToUpper()} COURSE HISTORY");
+        Console.WriteLine($"ENROLL ID COURSE ID REGISTRATN ID ENROLL DATE");
+        Console.WriteLine(new string('-', 45));
+
+        foreach (Enrollment enrollment in enrollments)
+        {
+            if (enrollment.RegistrationID == user?.RegistrationID)
+            {
+                Console.WriteLine("{0, -10} {1, -10} {2, -10} {3, -10}", enrollment.EnrolLmentID, enrollment.CourseID, enrollment.RegistrationID, enrollment.EnrollmentDate.ToShortDateString());
             }
         }
     }
