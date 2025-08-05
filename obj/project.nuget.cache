@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Or1MobOSbzggefgBOLkRGD2GPe8xXpEbfSp6d/0RjYjzKS+ff/wRUe/J1p401zDMnHI6iD3ZjMvfEKtFZaHPyg==",
+  "dgSpecHash": "7ctoJ99bsqg=",
   "success": true,
-  "projectFilePath": "/home/oti/web/projects/SyncLearning/SyncLearning.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\StephenOtienoOwoko\\OneDrive - Syncfusion\\Desktop\\PROJECTS\\MODULE II PROJECTS\\synclearning\\SyncLearning.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\StephenOtienoOwoko\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.18\\microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "C:\\Users\\StephenOtienoOwoko\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.18\\microsoft.windowsdesktop.app.ref.8.0.18.nupkg.sha512",
+    "C:\\Users\\StephenOtienoOwoko\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.18\\microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512",
+    "C:\\Users\\StephenOtienoOwoko\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.18\\microsoft.netcore.app.host.win-x64.8.0.18.nupkg.sha512"
+  ],
   "logs": []
 }

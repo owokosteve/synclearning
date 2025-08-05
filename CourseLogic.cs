@@ -6,6 +6,7 @@ public class CourseLogic
     private List<Course> courses = new List<Course>();
     private List<Enrollment> enrollments = new List<Enrollment>();
     private List<Enrollment> enrolledCourses = new List<Enrollment>();
+    public Course? nextAvailableCourse;
 
     // Register new user
     public void Register()
@@ -60,7 +61,7 @@ public class CourseLogic
                         PrintUserHistory(user);
                         break;
                     case "c":
-                        Console.WriteLine("Next enrollment is on...");
+                        NextEnrollment(user);
                         break;
                     case "d":
                         Console.WriteLine("Exiting...");
@@ -131,10 +132,11 @@ public class CourseLogic
                 DateTime courseOneDate = enrolledCourses[0].EnrollmentDate.AddDays(currentEnrolledCouse1!.CourseDuration);
                 DateTime courseTwoDate = enrolledCourses[1].EnrollmentDate.AddDays(currentEnrolledCouse2!.CourseDuration);
 
-                // string nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.ToString().Split(" ")[0] : courseOneDate.ToString().Split(" ")[0];
-                DateTime nextAvailableDate1 = courseOneDate > courseTwoDate ? courseTwoDate.Date : courseOneDate.Date;
+                // Get the date of the next available course
+                DateTime nextAvailableDate = courseOneDate > courseTwoDate ? courseTwoDate.Date : courseOneDate.Date;
+                nextAvailableCourse = courseOneDate > courseTwoDate ? currentEnrolledCouse2 : currentEnrolledCouse1;
 
-                Console.WriteLine($"You have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate1.ToLongDateString()}.");
+                Console.WriteLine($"\nYou have already enrolled in two courses. You can enroll in the next course on {nextAvailableDate.ToLongDateString()}.");
 
             }
         }
@@ -152,5 +154,11 @@ public class CourseLogic
                 Console.WriteLine("{0, -10} {1, -10} {2, -10} {3, -10}", enrollment.EnrolLmentID, enrollment.CourseID, enrollment.RegistrationID, enrollment.EnrollmentDate.ToShortDateString());
             }
         }
+    }
+    public void NextEnrollment(User user)
+    {
+        Console.WriteLine($"\nHey {user?.Username?.ToUpper()}! Here is your Next Available Course");
+        Console.WriteLine("\nCOURSE ID COURSE NAME TRAINER NAME DURATION SEATS");
+        Console.WriteLine("{0,-10} {1,-10} {2,-10} {2,-10} {3,-10}", nextAvailableCourse?.CourseID, nextAvailableCourse?.CourseName, nextAvailableCourse?.TrainerName, nextAvailableCourse?.CourseDuration, nextAvailableCourse?.SeatsAvailable);
     }
 }
